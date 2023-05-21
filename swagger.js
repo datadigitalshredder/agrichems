@@ -5,7 +5,7 @@ const doc = {
     title: 'Agricultural Solutions',
     description: 'Pesticides - Crop Protection Agents',
   },
-  host: 'https://pesticides.onrender.com',
+  host: 'pesticides.onrender.com',
   schemes: ['https'],
 };
 

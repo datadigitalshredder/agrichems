@@ -5,7 +5,7 @@
     "description": "Pesticides - Crop Protection Agents",
     "version": "1.0.0"
   },
-  "host": "https://pesticides.onrender.com",
+  "host": "pesticides.onrender.com",
   "basePath": "/",
   "schemes": [
     "https"

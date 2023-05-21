@@ -5,10 +5,10 @@
     "description": "Pesticides - Crop Protection Agents",
     "version": "1.0.0"
   },
-  "host": "localhost:8080",
+  "host": "https://pesticides.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/agrichems/": {

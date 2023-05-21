@@ -5,8 +5,8 @@ const doc = {
     title: 'Agricultural Solutions',
     description: 'Pesticides - Crop Protection Agents',
   },
-  host: 'localhost:8080',
-  schemes: ['http'],
+  host: 'https://pesticides.onrender.com',
+  schemes: ['https'],
 };
 
 const outputFile = './swagger.json';

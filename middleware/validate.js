@@ -14,7 +14,10 @@ const saveChem = (req, res, next) => {
     price: 'required|string',
     supplier: 'string',
     targetCrops: 'required|string',
-    targetPests: 'required|string'
+    targetPests: 'required|string',
+    base64PestImage: 'required|string',
+    base64PestImage2: 'string',
+    base64PestImage3: 'string'
   };
   validator(req.body, validationRule, {}, (err, status) => {
     if (!status) {

@@ -9,9 +9,23 @@ const validator = (body, rules, customMessages, callback) => {
 };
 
 // Custom validation for registration numbers: uppercase letters, numbers, and hyphens only
+
+// TEST 1
 // const registrationNumberRegex = /b[A-Z0-9]+(?:-[A-Z0-9]+)+/;
+    //    \b - a word boundary (before the next letter or digit there must be a non-word character or start of string
+    //    [A-Z0-9]+ - one or more letters or digits
+    //    (?:-[A-Z0-9]+)+ - 1 or more sequences of:
+    //    - - a hyphen
+    //    [A-Z0-9]+ - one or more letters or digits
+
+// TEST 2
 // const registrationNumberRegex = /b([0-9]+-[A-Z]+)+(?:-([0-9]+-[A-Z]+))+/;
-const registrationNumberRegex = /([0-9]+-[A-Z]+)-[A-Z0-9]+/
+
+// TEST 3 - Working
+
+const registrationNumberRegex = /([0-9]+-[A-Z]+)-[A-Z0-9]+/;
+// Explanation:
+// Paste the above RegEx in https://regexr.com/
 
 // Tighten registration number policy
 Validator.register('strict', value => registrationNumberRegex.test(value),

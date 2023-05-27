@@ -68,6 +68,15 @@
                 },
                 "targetPests": {
                   "example": "any"
+                },
+                "base64PestImage": {
+                  "example": "any"
+                },
+                "base64PestImage2": {
+                  "example": "any"
+                },
+                "base64PestImage3": {
+                  "example": "any"
                 }
               }
             }
@@ -155,6 +164,15 @@
                   "example": "any"
                 },
                 "targetPests": {
+                  "example": "any"
+                },
+                "base64PestImage": {
+                  "example": "any"
+                },
+                "base64PestImage2": {
+                  "example": "any"
+                },
+                "base64PestImage3": {
                   "example": "any"
                 }
               }

@@ -9,7 +9,7 @@ const saveChem = (req, res, next) => {
     pesticideType: 'required|string',
     activeIngredient: 'required|string',
     formulationType: 'required|string',
-    registrationNumber: 'required|string|min:5',
+    registrationNumber: 'required|string|min:5|strict',
     description: 'required|string',
     price: 'required|string',
     supplier: 'string',

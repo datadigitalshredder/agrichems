@@ -3,23 +3,39 @@ const mongodb = require('../db/connection');
 const ObjectId = require('mongodb').ObjectId;
 
 const getAll = async (req, res, next) => {
-  const result = await mongodb.getDb().db().collection('agrichems').find();
-  result.toArray().then((lists) => {
-    res.setHeader('Content-Type', 'application/json');
-    res.status(200).json(lists);
+  const result = await mongodb
+    .getDb()
+    .db()
+    .collection('agrichems')
+    .find()
+
+    .toArray((err, lists) => {
+      if (err) {
+        res.status(400).json({ message: err });
+      }
+      res.setHeader('Content-Type', 'application/json');
+      res.status(200).json(lists);
   });
 };
 
 const getOne = async (req, res, next) => {
+
+  if (!ObjectId.isValid(req.params.id)) { // Validate id for finding a chemical from database
+    res.status(400).json('Request must use a valid chemical id to find a chemical/pesticide.');
+  }
+
   const userId = new ObjectId(req.params.id);
   const result = await mongodb
     .getDb()
     .db()
     .collection('agrichems')
-    .find({ _id: userId });
-  result.toArray().then((lists) => {
-    res.setHeader('Content-Type', 'application/json');
-    res.status(200).json(lists[0]);
+    .find({ _id: userId })
+    .toArray((err, result) => {
+      if (err) {
+        res.status(400).json({ message: err });
+      }
+      res.setHeader('Content-Type', 'application/json');
+      res.status(200).json(result[0]);
   });
 };
 
@@ -45,34 +61,52 @@ const createNewChem = async (req, res) => {
   if (result.acknowledged) {
     res.status(201).json(result);
   } else {
-    res.status(500).json(result.error || 'Creating Chemical - Error occurred.');
+    res.status(500).json(result.error || 'Error occurred - Creating Chemical.');
   }
 };
 
 const updateChem = async (req, res) => {
+  
+  if (!ObjectId.isValid(req.params.id)) { // Validate id for updating a chemical from database
+    res.status(400).json('Request must use a valid chemical id to update a chemical/pesticide.');
+  }
+
   const userId = new ObjectId(req.params.id);
   
   const chemical = {
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    email: req.body.email,
-    favoriteColor: req.body.favoriteColor,
-    birthDate: req.body.birthDate
+    pesticideGroup: req.body.pesticideGroup,
+    tradeName: req.body.tradeName,
+    pesticideType: req.body.pesticideType,
+    activeIngredient: req.body.activeIngredient,
+    formulationType: req.body.formulationType,
+    registrationNumber: req.body.registrationNumber,
+    description: req.body.description,
+    price: req.body.price,
+    supplier: req.body.supplier,
+    targetCrops: req.body.targetCrops,
+    targetPests: req.body.targetPests
   };
+
   const result = await mongodb
     .getDb()
     .db()
     .collection('agrichems')
-    .replaceOne({ _id: userId }, contact);
+    .replaceOne({ _id: userId }, chemical);
+
   console.log(result);
   if (result.modifiedCount > 0) {
     res.status(204).send();
   } else {
-    res.status(500).json(result.error || 'Updating Chemical - Error occurred.');
+    res.status(500).json(result.error || 'Error occurred - Updating Chemical.');
   }
 };
 
 const deleteChem = async (req, res) => {
+
+  if (!ObjectId.isValid(req.params.id)) { // Validate id for deleting a chemical from database
+    res.status(400).json('Request must use a valid chemical id to delete a chemical/pesticide.');
+  }
+
   const userId = new ObjectId(req.params.id);
   const result = await mongodb
     .getDb()
@@ -83,7 +117,7 @@ const deleteChem = async (req, res) => {
   if (result.deletedCount > 0) {
     res.status(200).send();
   } else {
-    res.status(500).json(result.error || 'Deleting Chemical- Error occurred.');
+    res.status(500).json(result.error || 'Error occurred - Deleting Chemical.');
   }
 };
 

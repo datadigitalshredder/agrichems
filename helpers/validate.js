@@ -23,7 +23,7 @@ const validator = (body, rules, customMessages, callback) => {
 
 // TEST 3 - Working
 
-const registrationNumberRegex = /([0-9]+-[A-Z]+)-[A-Z0-9]+/;
+const registrationNumberRegex = /[0-9]+-[A-Z]+-[A-Z0-9]+/;
 // Explanation:
 // Paste the above RegEx in https://regexr.com/
 

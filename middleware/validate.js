@@ -15,7 +15,7 @@ const saveChem = (req, res, next) => {
     supplier: 'string',
     targetCrops: 'required|string',
     targetPests: 'required|string',
-    base64PestImage: 'required|string',
+    base64PestImage: 'string',
     base64PestImage2: 'string',
     base64PestImage3: 'string'
   };

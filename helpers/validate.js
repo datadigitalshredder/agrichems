@@ -29,7 +29,7 @@ const registrationNumberRegex = /([0-9]+-[A-Z]+)-[A-Z0-9]+/;
 
 // Tighten registration number policy
 Validator.register('strict', value => registrationNumberRegex.test(value),
-    'Registration number must contain uppercase letters, numbers, and hyphens only');
+    'Registration number must contain uppercase letters, numbers, and hyphens only. For example, 125-D-2-18 or 18-B-165-D-1-46');
 
 
 module.exports = validator;

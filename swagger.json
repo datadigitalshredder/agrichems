@@ -21,6 +21,9 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           }
         }
       },
@@ -74,6 +77,9 @@
           "201": {
             "description": "Created"
           },
+          "412": {
+            "description": "Precondition Failed"
+          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -97,6 +103,9 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           }
         }
       },
@@ -115,19 +124,37 @@
             "schema": {
               "type": "object",
               "properties": {
-                "firstName": {
+                "pesticideGroup": {
                   "example": "any"
                 },
-                "lastName": {
+                "tradeName": {
                   "example": "any"
                 },
-                "email": {
+                "pesticideType": {
                   "example": "any"
                 },
-                "favoriteColor": {
+                "activeIngredient": {
                   "example": "any"
                 },
-                "birthDate": {
+                "formulationType": {
+                  "example": "any"
+                },
+                "registrationNumber": {
+                  "example": "any"
+                },
+                "description": {
+                  "example": "any"
+                },
+                "price": {
+                  "example": "any"
+                },
+                "supplier": {
+                  "example": "any"
+                },
+                "targetCrops": {
+                  "example": "any"
+                },
+                "targetPests": {
                   "example": "any"
                 }
               }
@@ -137,6 +164,12 @@
         "responses": {
           "204": {
             "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "412": {
+            "description": "Precondition Failed"
           },
           "500": {
             "description": "Internal Server Error"
@@ -156,6 +189,9 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           },
           "500": {
             "description": "Internal Server Error"

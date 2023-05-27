@@ -52,7 +52,9 @@ const createNewChem = async (req, res) => {
     supplier: req.body.supplier,
     targetCrops: req.body.targetCrops,
     targetPests: req.body.targetPests,
-    base64PestImage: req.body.base64PestImage
+    base64PestImage: req.body.base64PestImage,
+    base64PestImage2: req.body.base64PestImage2,
+    base64PestImage3: req.body.base64PestImage3
   };
   const result = await mongodb
     .getDb()
@@ -86,7 +88,9 @@ const updateChem = async (req, res) => {
     supplier: req.body.supplier,
     targetCrops: req.body.targetCrops,
     targetPests: req.body.targetPests,
-    base64PestImage: req.body.base64PestImage
+    base64PestImage: req.body.base64PestImage,
+    base64PestImage2: req.body.base64PestImage2,
+    base64PestImage3: req.body.base64PestImage3
   };
 
   const result = await mongodb

@@ -18,22 +18,22 @@
 // module.exports = user = mongoose.model('user', user);
 
 
-module.exports = (mongoose) => {
-    const user = mongoose.Schema({
-      username: {
-        type: String
-      },
-      password: {
-        type: String
-      },
-      profession: {
-        type: String
-      },
-      location: {
-        type: String
-      }
+// module.exports = (mongoose) => {
+//     const user = mongoose.Schema({
+//       username: {
+//         type: String
+//       },
+//       password: {
+//         type: String
+//       },
+//       profession: {
+//         type: String
+//       },
+//       location: {
+//         type: String
+//       }
       
-    });
+//     });
   
-    return mongoose.model('users', user);
-  };
+//     return mongoose.model('users', user);
+//   };

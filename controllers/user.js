@@ -70,7 +70,7 @@ const getAll = async (req, res, next) => {
 const getOne = async (req, res, next) => {
 
   if (!ObjectId.isValid(req.params.id)) { // Validate id for finding a user from database
-    res.status(400).json('Request must use a valid chemical id to find a user.');
+    res.status(400).json('Request must use a valid user id to find a user.');
   }
 
   const userId = new ObjectId(req.params.id);
@@ -89,7 +89,7 @@ const getOne = async (req, res, next) => {
 };
 
 const createNewUser = async (req, res) => {
-  const chemical = {
+  const user = {
     username: req.body.username,
     password: req.body.password,
     profession: req.body.profession,
@@ -99,7 +99,7 @@ const createNewUser = async (req, res) => {
     .getDb()
     .db()
     .collection('user')
-    .insertOne(chemical);
+    .insertOne(user);
   if (result.acknowledged) {
     res.status(201).json(result);
   } else {
@@ -115,7 +115,7 @@ const updateUser = async (req, res) => {
 
   const userId = new ObjectId(req.params.id);
   
-  const chemical = {
+  const user = {
     username: req.body.username,
     password: req.body.password,
     profession: req.body.profession,
@@ -126,7 +126,7 @@ const updateUser = async (req, res) => {
     .getDb()
     .db()
     .collection('user')
-    .replaceOne({ _id: userId }, chemical);
+    .replaceOne({ _id: userId }, user);
 
   console.log(result);
   if (result.modifiedCount > 0) {
@@ -139,7 +139,7 @@ const updateUser = async (req, res) => {
 const deleteUser = async (req, res) => {
 
   if (!ObjectId.isValid(req.params.id)) { // Validate id for deleting a user from database
-    res.status(400).json('Request must use a valid chemical id to delete a user.');
+    res.status(400).json('Request must use a valid user id to delete a user.');
   }
 
   const userId = new ObjectId(req.params.id);

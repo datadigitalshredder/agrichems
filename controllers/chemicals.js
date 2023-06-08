@@ -9,7 +9,7 @@ const getAll = async (req, res, next) => {
     .collection('agrichems')
     .find()
 
-    .toArray((err, lists) => {
+    result.toArray((err, lists) => {
       if (err) {
         res.status(400).json({ message: err });
       }

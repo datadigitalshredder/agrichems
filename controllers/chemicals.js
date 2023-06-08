@@ -9,13 +9,13 @@ const getAll = async (req, res, next) => {
     .collection('agrichems')
     .find()
 
-    result.toArray((err, lists) => {
+    result.toArray(err).then((lists) => {
       if (err) {
         res.status(400).json({ message: err });
       }
       res.setHeader('Content-Type', 'application/json');
       res.status(200).json(lists);
-  });
+    });
 };
 
 const getOne = async (req, res, next) => {

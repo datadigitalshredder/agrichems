@@ -10,11 +10,14 @@ const getAll = async (req, res, next) => {
     .find()
 
     result.toArray().then((lists) => {
-      if (err) {
-        res.status(400).json({ message: err });
-      }
       res.setHeader('Content-Type', 'application/json');
+      // if (err) {
+      //   res.status(400).json({ message: err });
+      // } // else {
+      //   res.status(200).json(lists);
+      // }
       res.status(200).json(lists);
+
     });
 };
 

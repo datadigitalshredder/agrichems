@@ -30,7 +30,7 @@ const getOne = async (req, res, next) => {
     .db()
     .collection('agrichems')
     .find({ _id: userId })
-    .toArray((err, result) => {
+    result.toArray((err, result) => {
       if (err) {
         res.status(400).json({ message: err });
       }

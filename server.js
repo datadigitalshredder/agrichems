@@ -6,6 +6,8 @@ const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("./swagger.json");
 
 const port = process.env.PORT || 8080;
+
+require('./db/passport')(passport)
 const app = express();
 
 app
@@ -21,7 +23,24 @@ app
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
     next();
   })
-  .use('/', require('./routes'));
+  .use( // Sessions
+    session({
+      secret: 'keyboard cat',
+      resave: false,
+      saveUninitialized: false,
+      store: MongoStore.create({mongoUrl: process.env.MONGO_URI,}),
+    })
+  )
+  .use(passport.initialize()) // Passport middleware
+  .use(passport.session())
+  .use(function (req, res, next) { // Set global var
+    res.locals.user = req.user || null
+    next()
+  })
+  .use('/', require('./routes'))
+  .use('/auth', require('./routes/auth'))
+  .use('/agrichems', require('./routes/agrichems'))
+
 
 // Error handling
 // Catch All Errors

@@ -1,4 +1,4 @@
-// const express = require('express');
+const express = require('express');
 const bodyParser = require('body-parser');
 const mongodb = require('./db/connection');
 // const dotenv = require('dotenv')
@@ -6,7 +6,7 @@ const mongodb = require('./db/connection');
 
 //
 const path = require('path')
-const express = require('express')
+// const express = require('express')
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 const morgan = require('morgan')

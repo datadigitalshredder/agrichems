@@ -7,6 +7,22 @@ const doc = {
   },
   host: 'pesticides.onrender.com',
   schemes: ['https'],
+  // Document details...
+  security: {
+    oauth2: {
+      type: "oauth2",
+      flows: {
+        implicit: {
+          authorizationUrl: process.env.ISSUER_URL,
+          scopes: {
+            read: "Grants read access",
+            write: "Grants write access"
+          }
+        }
+      }
+    }
+  }
+  // More document details...
 };
 
 const outputFile = './swagger.json';

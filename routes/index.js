@@ -13,11 +13,11 @@ const { ensureAuth, ensureGuest } = require('../middleware/auth')
 //     res.use('/api-docs', swaggerUi.setup(swaggerDocument));
 //   })
 
-router.use('/api-docs', ensureGuest, swaggerUi.serve);
-router.get('/api-docs', ensureGuest, swaggerUi.setup(swaggerDocument));
+router.use('/api-docs', ensureGuest, ensureAuth, swaggerUi.serve);
+router.get('/api-docs', ensureGuest, ensureAuth, swaggerUi.setup(swaggerDocument));
 
 
-router.get("/log",ensureAuth, async(req,res)=>{
+router.get("/log",ensureAuth, ensureGuest, async(req,res)=>{
     res.render('index',{userinfo:req.user})
 })
 

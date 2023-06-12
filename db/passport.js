@@ -2,7 +2,7 @@
 const GoogleStrategy = require('passport-google-oauth20').Strategy
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
-const User = require('../controllers/user')
+const User = require('../controllers/User')
 // const dotenv = require('dotenv');
 dotenv.config({ path: '../.env' })
 

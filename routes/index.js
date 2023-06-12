@@ -17,7 +17,7 @@ router.use('/api-docs', ensureGuest, ensureAuth, swaggerUi.serve);
 router.get('/api-docs', ensureGuest, ensureAuth, swaggerUi.setup(swaggerDocument));
 
 
-router.get("/log",ensureAuth, ensureGuest, async(req,res)=>{
+router.get("/login",ensureAuth, ensureGuest, async(req,res)=>{
     res.render('index',{userinfo:req.user})
 })
 

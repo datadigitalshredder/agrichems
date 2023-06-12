@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 const User = require('../controllers/user')
 // const dotenv = require('dotenv');
-dotenv.config({ path: '../.env' })
+dotenv.config({ path: process.env.GOOGLE_CLIENT_ID  })
 
 
 module.exports = function (passport) {

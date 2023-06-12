@@ -13,9 +13,7 @@ const swaggerDocument = require("./swagger.json");
 const app = express();
 
 const port = process.env.PORT || 8080;
-// dotenv.config({ path: './.env' })
-// dotenv.config();
-dotenv.config({ path: './.env' })
+dotenv.config({ path: process.env.GOOGLE_CLIENT_ID })
 
 
 mongoose.connect(process.env.MONGODB_URI,{

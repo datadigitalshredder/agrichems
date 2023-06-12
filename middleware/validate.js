@@ -4,6 +4,11 @@ const validator = require('../helpers/validate');
 
 const saveChem = (req, res, next) => {
   const validationRule = {
+    user: {
+      name: 'required|string',
+      profession: 'required|string',
+      location: 'required|string'
+    },
     pesticideGroup: 'required|string',
     tradeName: 'string',
     pesticideType: 'required|string',

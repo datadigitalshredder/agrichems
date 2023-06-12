@@ -1,35 +1,30 @@
 const express = require('express');
-const bodyParser = require('body-parser');
-const mongodb = require('./db/connection');
-// const dotenv = require('dotenv')
-// const passport = require('passport')
-
-//
-const path = require('path')
-// const express = require('express')
-const mongoose = require('mongoose')
+// const mongodb = require('mongodb')
+const mongoose=require('mongoose');
 const dotenv = require('dotenv')
-const morgan = require('morgan')
-const exphbs = require('express-handlebars')
-const methodOverride = require('method-override')
 const passport = require('passport')
 const session = require('express-session')
-const MongoStore = require('connect-mongo');
-const connectDB = require('./db/connection')
-//
+const MongoStore = require('connect-mongo')
+let bodyParser = require('body-parser')
+
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("./swagger.json");
 
-const port = process.env.PORT || 8080;
+const app = express();
 
-// Load config
+const port = process.env.PORT || 8080;
+// dotenv.config({ path: './.env' })
+// dotenv.config();
 dotenv.config({ path: './.env' })
 
+
+mongoose.connect(process.env.MONGODB_URI,{
+    useNewUrlParser:true,
+    useUnifiedTopology: true
+})
+
+// Passport config
 require('./db/passport')(passport)
-
-connectDB()
-
-const app = express();
 
 app
   .use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
@@ -44,24 +39,23 @@ app
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
     next();
   })
-  .use( // Sessions
+  .use(express.urlencoded({extended:true}))
+  .use(express.static('public'))
+
+  .use(
     session({
       secret: 'keyboard cat',
       resave: false,
       saveUninitialized: false,
-      store: MongoStore.create({mongoUrl: process.env.MONGO_URI,}),
+      store: MongoStore.create({ mongoUrl: process.env.MONGODB_URI }),
     })
   )
-  .use(passport.initialize()) // Passport middleware
+  // Passport middleware
+  .use(passport.initialize())
   .use(passport.session())
-  .use(function (req, res, next) { // Set global var
-    res.locals.user = req.user || null
-    next()
-  })
-  .use('/', require('./routes'))
-  .use('/auth', require('./routes/auth'))
-  .use('/agrichems', require('./routes/agrichems'))
 
+  .use('/', require('./routes'))
+  .use('/auth', require('./routes/auth'));
 
 // Error handling
 // Catch All Errors
@@ -71,11 +65,13 @@ app
 
 //
 
-mongodb.initDb((err, mongodb) => {
-  if (err) {
-    console.log(err);
-  } else {
-    app.listen(port);
-    console.log(`Connected to Database and listening on ${port}`);
-  }
-});
+// mongodb.initDb((err, mongodb) => {
+//   if (err) {
+//     console.log(err);
+//   } else {
+//     app.listen(port);
+//     console.log(`Connected to Database and listening on ${port}`);
+//   }
+// });
+
+console.log(`Connected to Database and listening on ${port}`);

@@ -9,9 +9,13 @@ router.use('/agrichems', require('./agrichems'));
 //importing middleware
 const { ensureAuth, ensureGuest } = require('../middleware/auth')
 
-router.get('/api-docs', ensureGuest ,(req, res) => {
-    res.use('/api-docs', swaggerUi.setup(swaggerDocument));
-  })
+// router.get('/api-docs', ensureGuest ,(req, res) => {
+//     res.use('/api-docs', swaggerUi.setup(swaggerDocument));
+//   })
+
+router.use('/api-docs', ensureGuest, swaggerUi.serve);
+router.get('/api-docs', ensureGuest, swaggerUi.setup(swaggerDocument));
+
 
 router.get("/log",ensureAuth, async(req,res)=>{
     res.render('index',{userinfo:req.user})

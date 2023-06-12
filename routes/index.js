@@ -1,22 +1,21 @@
-const express = require('express');
-const router = express.Router();
+// const express = require('express');
+const router = require('express').Router()
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('../swagger.json');
 
 router.use('/agrichems', require('./agrichems'));
 // router.use('/user', require('./user'));
 
-
-// const router = require('express').Router()
 //importing middleware
 const { ensureAuth, ensureGuest } = require('../middleware/auth')
 
 router.get('/', ensureGuest ,(req, res) => {
-    res.render('login')
+    res.use('/api-docs', swaggerUi.setup(swaggerDocument));
   })
 
 router.get("/log",ensureAuth, async(req,res)=>{
     res.render('index',{userinfo:req.user})
 })
-module.exports=router;
 
-// module.exports = router;
+module.exports=router;
 

@@ -1,9 +1,10 @@
 // import all the things we need  
 const GoogleStrategy = require('passport-google-oauth20').Strategy
 const mongoose = require('mongoose')
+const dotenv = require('dotenv')
 const User = require('../controllers/user')
-const dotenv = require('dotenv');
-dotenv.config();
+// const dotenv = require('dotenv');
+dotenv.config({ path: '../.env' })
 
 
 module.exports = function (passport) {

@@ -1,5 +1,5 @@
 const express = require('express');
-// const mongodb = require('mongodb')
+const mongodb = require('./db/connection')
 const mongoose=require('mongoose');
 const dotenv = require('dotenv')
 const passport = require('passport')
@@ -13,7 +13,7 @@ const swaggerDocument = require("./swagger.json");
 const app = express();
 
 const port = process.env.PORT || 8080;
-dotenv.config({ path: process.env.GOOGLE_CLIENT_ID })
+dotenv.config({ path: './.env' })
 
 
 mongoose.connect(process.env.MONGODB_URI,{
@@ -63,13 +63,13 @@ app
 
 //
 
-// mongodb.initDb((err, mongodb) => {
-//   if (err) {
-//     console.log(err);
-//   } else {
-//     app.listen(port);
-//     console.log(`Connected to Database and listening on ${port}`);
-//   }
-// });
+mongodb.initDb((err, mongodb) => {
+  if (err) {
+    console.log(err);
+  } else {
+    app.listen(port);
+    console.log(`Connected to Database and listening on ${port}`);
+  }
+});
 
-console.log(`Connected to Database and listening on ${port}`);
+// console.log(`Connected to Database and listening on ${port}`);

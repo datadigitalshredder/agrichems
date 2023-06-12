@@ -9,7 +9,7 @@ router.use('/agrichems', require('./agrichems'));
 //importing middleware
 const { ensureAuth, ensureGuest } = require('../middleware/auth')
 
-router.get('/api-docs', ensureGuest ,(req, res) => {
+router.get('/', ensureGuest ,(req, res) => {
     res.use('/api-docs', swaggerUi.setup(swaggerDocument));
   })
 

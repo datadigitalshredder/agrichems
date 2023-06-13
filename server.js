@@ -1,5 +1,6 @@
 const express = require('express');
 const mongodb = require('./db/connection')
+const connectDB = require('./db/connection')
 const mongoose=require('mongoose');
 const dotenv = require('dotenv')
 const passport = require('passport')
@@ -12,9 +13,11 @@ const swaggerDocument = require("./swagger.json");
 
 const app = express();
 
-const port = process.env.PORT || 8080;
 dotenv.config({ path: './.env' })
 
+const port = process.env.PORT || 8080;
+
+connectDB()
 
 mongoose.connect(process.env.MONGODB_URI,{
     useNewUrlParser:true,
@@ -40,11 +43,14 @@ app
   .use(express.urlencoded({extended:true}))
   .use(express.static('public'))
 
+  // Sessions
+
   .use(
     session({
       secret: 'keyboard cat',
       resave: false,
       saveUninitialized: false,
+      // cookie: { secure: true }, // Works with https
       store: MongoStore.create({ mongoUrl: process.env.MONGODB_URI }),
     })
   )
@@ -63,13 +69,16 @@ app
 
 //
 
-mongodb.initDb((err, mongodb) => {
-  if (err) {
-    console.log(err);
-  } else {
-    app.listen(port);
-    console.log(`Connected to Database and listening on ${port}`);
-  }
-});
+// mongodb.initDb((err, mongodb) => {
+//   if (err) {
+//     console.log(err);
+//   } else {
+//     app.listen(port);
+//     console.log(`Connected to Database and listening on ${port}`);
+//   }
+// });
 
-// console.log(`Connected to Database and listening on ${port}`);
+app.listen(
+  port,
+  console.log(`Connected to Database and listening on ${port}`)
+)

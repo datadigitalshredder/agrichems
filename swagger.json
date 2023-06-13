@@ -29,7 +29,7 @@
         "responses": {}
       }
     },
-    "/log": {
+    "/login": {
       "get": {
         "description": "",
         "parameters": [],

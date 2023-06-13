@@ -21,5 +21,14 @@ router.get("/login",ensureAuth, ensureGuest, async(req,res)=>{
     res.render('index',{userinfo:req.user})
 })
 
-module.exports=router;
+// LOGIN TEST
+
+// Login page
+// route GET /
+router.get('/', (req, res) => {
+    res.send('Login')
+})
+
+
+module.exports = router;
 

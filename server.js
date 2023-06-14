@@ -27,6 +27,11 @@ mongoose.connect(process.env.MONGODB_URI,{
 // Passport config
 require('./db/passport')(passport)
 
+// Logging
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'))
+}
+
 app
   .use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
   .use(bodyParser.json())
@@ -58,6 +63,7 @@ app
   .use(passport.initialize())
   .use(passport.session())
 
+  // Routes
   .use('/', require('./routes'))
   .use('/auth', require('./routes/auth'));
 

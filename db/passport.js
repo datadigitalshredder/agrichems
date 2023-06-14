@@ -3,7 +3,6 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 const User = require('../controllers/User')
-// const dotenv = require('dotenv');
 dotenv.config({ path: '../.env' })
 
 
@@ -17,14 +16,15 @@ module.exports = function (passport) {
       },
       async (accessToken, refreshToken, profile, done) => {
         //get the user data from google 
-        const newUser = {
-          googleId: profile.id,
-          displayName: profile.displayName,
-          firstName: profile.name.givenName,
-          lastName: profile.name.familyName,
-          image: profile.photos[0].value,
-          email: profile.emails[0].value
-        }
+        console.log(profile)
+        // const newUser = {
+        //   googleId: profile.id,
+        //   displayName: profile.displayName,
+        //   firstName: profile.name.givenName,
+        //   lastName: profile.name.familyName,
+        //   image: profile.photos[0].value,
+        //   email: profile.emails[0].value
+        // }
 
         try {
           //find the user in our database 

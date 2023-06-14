@@ -36,6 +36,17 @@
         "responses": {}
       }
     },
+    "/": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/agrichems/": {
       "get": {
         "description": "",

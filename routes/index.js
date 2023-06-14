@@ -26,7 +26,7 @@ const swaggerDocument = require('../swagger.json');
 // Login page
 // route GET /
 // ensureGuest
-router.get('/', (req, res) => {
+router.get('/login', (req, res) => {
     res.redirect('https://pesticides.onrender.com/auth/google')
 })
 
@@ -35,7 +35,7 @@ router.get('/', (req, res) => {
 // ensureAuth
 router.get('/dashboard', (req, res) => {
     res.redirect(
-        `https://pesticides.onrender.com/auth/google?client_id=${process.env.GOOGLE_CLIENT_ID}`,
+        `https://pesticides.onrender.com/auth/google?client_id=${process.env.GOOGLE_CLIENT_ID}`
       );
 })
 

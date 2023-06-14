@@ -7,6 +7,7 @@ const passport = require('passport')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')
 let bodyParser = require('body-parser')
+const exphbs = require('express-handlebars')
 
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("./swagger.json");
@@ -31,6 +32,15 @@ require('./db/passport')(passport)
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'))
 }
+
+// Handlebars
+app.engine('.hbs', exphbs.engine({ defaultLayout: 'main', extname: '.hbs' }))
+app.set('view engine', '.hbs')
+// app.set("views", "./views")
+
+// Body parser
+// app.use(express.urlencoded({ extended: false }))
+// app.use(express.json())
 
 app
   .use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
@@ -65,7 +75,9 @@ app
 
   // Routes
   .use('/', require('./routes'))
-  .use('/auth', require('./routes/auth'));
+  .use('/auth', require('./routes/auth'))
+  // .use('/dashboard', require('./routes/'));
+
 
 // Error handling
 // Catch All Errors

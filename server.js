@@ -34,8 +34,8 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 // Handlebars
-app.engine('.hbs', exphbs.engine({ defaultLayout: 'main', extname: '.hbs' }))
-app.set('view engine', '.hbs')
+// app.engine('.hbs', exphbs.engine({ defaultLayout: 'main', extname: '.hbs' }))
+// app.set('view engine', '.hbs')
 // app.set("views", "./views")
 
 // Body parser

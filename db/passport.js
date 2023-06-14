@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 const User = require('../controllers/User')
 dotenv.config({ path: '../.env' })
+// test
 
 
 module.exports = function (passport) {

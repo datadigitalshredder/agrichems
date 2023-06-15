@@ -1,8 +1,13 @@
-const express = require('express');
-const mongodb = require('./db/connection')
-const connectDB = require('./db/connection')
-const mongoose=require('mongoose');
+const express = require('express')
+const path = require('path')
 const dotenv = require('dotenv')
+dotenv.config({ path: './.env' })
+const mongodb = require('./db/connection')
+// const mongodb = require('mongodb')
+// const MongoClient = require('mongodb').MongoClient
+const connectDB = require('./db/connection')
+const mongoose = require('mongoose')
+
 const passport = require('passport')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')
@@ -14,11 +19,11 @@ const swaggerDocument = require("./swagger.json");
 
 const app = express();
 
-dotenv.config({ path: './.env' })
+// dotenv.config({ path: './.env' })
 
 const port = process.env.PORT || 8080;
 
-connectDB()
+// connectDB()
 
 mongoose.connect(process.env.MONGODB_URI,{
     useNewUrlParser:true,
@@ -87,16 +92,17 @@ app
 
 //
 
-// mongodb.initDb((err, mongodb) => {
-//   if (err) {
-//     console.log(err);
-//   } else {
-//     app.listen(port);
-//     console.log(`Connected to Database and listening on ${port}`);
-//   }
-// });
+mongodb.initDb((err, mongodb) => {
+  if (err) {
+    console.log(err);
+  } else {
+    // connectDB();
+    app.listen(port);
+    console.log(`Mongodb connected and listening on ${port}`);
+  }
+});
 
-app.listen(
-  port,
-  console.log(`Connected to Database and listening on ${port}`)
-)
+// app.listen(
+//   port,
+//   console.log(`Mongoose connected and listening on ${port}`)
+// )

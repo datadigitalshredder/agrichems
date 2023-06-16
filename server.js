@@ -70,7 +70,7 @@ app
       secret: 'keyboard cat',
       resave: false,
       saveUninitialized: false,
-      // cookie: { secure: true }, // Works with https
+      cookie: { secure: true }, // Works with https
       store: MongoStore.create({ mongoUrl: process.env.MONGODB_URI }),
     })
   )

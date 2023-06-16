@@ -22,14 +22,14 @@
     }
   },
   "paths": {
-    "/api-docs": {
+    "/login": {
       "get": {
         "description": "",
         "parameters": [],
         "responses": {}
       }
     },
-    "/login": {
+    "/api-docs": {
       "get": {
         "description": "",
         "parameters": [],

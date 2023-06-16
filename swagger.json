@@ -58,7 +58,7 @@
             "schema": {
               "type": "object",
               "properties": {
-                "name": {
+                "userName": {
                   "example": "any"
                 },
                 "profession": {
@@ -164,7 +164,7 @@
             "schema": {
               "type": "object",
               "properties": {
-                "name": {
+                "userName": {
                   "example": "any"
                 },
                 "profession": {

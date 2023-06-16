@@ -44,11 +44,9 @@ const getOne = async (req, res, next) => {
 
 const createNewChem = async (req, res) => {
   const chemical = {
-    user: {
-      name: req.body.name,
-      profession: req.body.profession,
-      location: req.body.location
-    },
+    userName: req.body.userName,
+    profession: req.body.profession,
+    location: req.body.location,
     pesticideGroup: req.body.pesticideGroup,
     tradeName: req.body.tradeName,
     pesticideType: req.body.pesticideType,
@@ -85,11 +83,9 @@ const updateChem = async (req, res) => {
   const userId = new ObjectId(req.params.id);
   
   const chemical = {
-    user: {
-      name: req.body.name,
-      profession: req.body.profession,
-      location: req.body.location
-    },
+    userName: req.body.userName,
+    profession: req.body.profession,
+    location: req.body.location,
     pesticideGroup: req.body.pesticideGroup,
     tradeName: req.body.tradeName,
     pesticideType: req.body.pesticideType,

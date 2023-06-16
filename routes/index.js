@@ -1,7 +1,7 @@
 // const express = require('express');
 const router = require('express').Router()
-// const swaggerUi = require('swagger-ui-express');
-// const swaggerDocument = require('../swagger.json');
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('../swagger.json');
 
 // router.use('/agrichems', require('./agrichems'));
 // router.use('/user', require('./user'));
@@ -13,13 +13,13 @@ const { ensureAuth, ensureGuest } = require('../middleware/auth')
 //     res.use('/api-docs', swaggerUi.setup(swaggerDocument));
 //   })
 
-// router.use('/api-docs', ensureAuth, swaggerUi.serve);
-// router.get('/api-docs', ensureAuth, swaggerUi.setup(swaggerDocument));
+router.use('/api-docs', ensureAuth, swaggerUi.serve);
+router.get('/api-docs', ensureAuth, swaggerUi.setup(swaggerDocument));
 
 
-// router.get("/login", ensureGuest, async(req,res)=>{
-//     res.render('index',{userinfo:req.user})
-// })
+router.get("/login", ensureGuest, async(req,res)=>{
+    res.render('index',{userinfo:req.user})
+})
 
 // LOGIN TEST
 

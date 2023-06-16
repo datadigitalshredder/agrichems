@@ -11,7 +11,7 @@ router.get(
   passport.authenticate('google', { failureRedirect: '/' }),
   (req, res) => {
     // res.redirect('/api-docs', swaggerUi.setup(swaggerDocument))
-    res.redirect('/api-docs')
+    res.redirect('/log')
 
   }
 )

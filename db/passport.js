@@ -1,9 +1,9 @@
 // import all the things we need 
-const passport = require('passport') 
+// const passport = require('passport') 
 const GoogleStrategy = require('passport-google-oauth20').Strategy
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
-const User = require('../controllers/user')
+const User = require('../controllers/User')
 dotenv.config({ path: '../.env' })
 // test
 

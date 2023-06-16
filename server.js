@@ -23,7 +23,7 @@ const app = express();
 
 const port = process.env.PORT || 8080;
 
-// connectDB()
+connectDB()
 
 mongoose.connect(process.env.MONGODB_URI,{
     useNewUrlParser:true,
@@ -92,17 +92,17 @@ app
 
 //
 
-mongodb.initDb((err, mongodb) => {
-  if (err) {
-    console.log(err);
-  } else {
-    // connectDB();
-    app.listen(port);
-    console.log(`Mongodb connected and listening on ${port}`);
-  }
-});
+// mongodb.initDb((err, mongodb) => {
+//   if (err) {
+//     console.log(err);
+//   } else {
+//     // connectDB();
+//     app.listen(port);
+//     console.log(`Mongodb connected and listening on ${port}`);
+//   }
+// });
 
-// app.listen(
-//   port,
-//   console.log(`Mongoose connected and listening on ${port}`)
-// )
+app.listen(
+  port,
+  console.log(`Mongoose connected and listening on ${port}`)
+)

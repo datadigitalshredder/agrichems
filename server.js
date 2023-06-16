@@ -49,9 +49,6 @@ require('./db/passport')(passport)
 // app.use(express.json())
 
 app
-  // Passport middleware
-  .use(passport.initialize())
-  .use(passport.session())
   .use('/api-docs', ensureAuth, swaggerUi.serve, swaggerUi.setup(swaggerDocument))
   .use(bodyParser.json())
   .use((req, res, next) => {
@@ -79,6 +76,9 @@ app
     })
   )
 
+  // Passport middleware
+  .use(passport.initialize())
+  .use(passport.session())
 
   // Routes
   .use('/', require('./routes'))

@@ -24,6 +24,7 @@ let bodyParser = require('body-parser')
 
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("./swagger.json");
+const { ensureAuth } = require('./middleware/auth')
 
 connectDB()
 
@@ -53,7 +54,7 @@ const port = process.env.PORT || 8080;
 // app.use(express.json())
 
 app
-  .use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
+  .use('/api-docs', ensureAuth, swaggerUi.serve, swaggerUi.setup(swaggerDocument))
   .use(bodyParser.json())
   .use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');

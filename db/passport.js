@@ -1,4 +1,5 @@
-// import all the things we need  
+// import all the things we need 
+const passport = require('passport') 
 const GoogleStrategy = require('passport-google-oauth20').Strategy
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')

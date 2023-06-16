@@ -94,17 +94,17 @@ app
 
 //
 
-// mongodb.initDb((err, mongodb) => {
-//   if (err) {
-//     console.log(err);
-//   } else {
-//     // connectDB();
-//     app.listen(port);
-//     console.log(`Mongodb connected and listening on ${port}`);
-//   }
-// });
+mongodb.initDb((err, mongodb) => {
+  if (err) {
+    console.log(err);
+  } else {
+    // connectDB();
+    app.listen(port);
+    console.log(`Mongodb connected and listening on ${port}`);
+  }
+});
 
-app.listen(
-  port,
-  console.log(`Mongoose connected and listening on ${port}`)
-)
+// app.listen(
+//   port,
+//   console.log(`Mongoose connected and listening on ${port}`)
+// )

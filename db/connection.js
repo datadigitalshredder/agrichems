@@ -44,7 +44,6 @@ const getDb = () => {
 module.exports = {
   initDb,
   getDb,
-  // connectDB,
 };
 
 // module.exports = connectDB

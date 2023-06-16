@@ -8,31 +8,31 @@ const doc = {
   host: 'pesticides.onrender.com',
   schemes: ['https'],
   // Document details...
-  security: {
-    oauth2: {
-      type: "oauth2",
-      flows: {
-        implicit: {
-          authorizationUrl: process.env.ISSUER_URL,
-          scopes: {
-            read: "Grants read access",
-            write: "Grants write access"
-          }
-        }
-      }
-    }
-  },
-  // securityDefinitions: {
-  //   google_oauth: { 
+  // security: {
+  //   oauth2: {
   //     type: "oauth2",
-  //     flow: "implicit",
-  //     authorizationUrl: "https://accounts.google.com/o/oauth2/v2/auth",
-  //     tokenUrl: "https://www.googleapis.com/oauth2/v4/token",
-  //     scopes: {
-  //       "https://www.googleapis.com/auth/userinfo.profile": "All user operations requiring authentication."
+  //     flows: {
+  //       implicit: {
+  //         authorizationUrl: process.env.ISSUER_URL,
+  //         scopes: {
+  //           read: "Grants read access",
+  //           write: "Grants write access"
+  //         }
+  //       }
   //     }
   //   }
   // },
+  securityDefinitions: {
+    google_oauth: { 
+      type: "oauth2",
+      flow: "implicit",
+      authorizationUrl: "https://accounts.google.com/o/oauth2/v2/auth",
+      tokenUrl: "https://www.googleapis.com/oauth2/v4/token",
+      scopes: {
+        "https://www.googleapis.com/auth/userinfo.profile": "All user operations requiring authentication."
+      }
+    }
+  },
   // More document details...
 };
 

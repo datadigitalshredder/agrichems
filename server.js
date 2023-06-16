@@ -1,42 +1,47 @@
-const express = require('express')
 const path = require('path')
-const dotenv = require('dotenv')
-dotenv.config({ path: './.env' })
-const mongodb = require('./db/connection')
-// const mongodb = require('mongodb')
-// const MongoClient = require('mongodb').MongoClient
-const connectDB = require('./db/connection')
+const express = require('express')
 const mongoose = require('mongoose')
-
+const dotenv = require('dotenv')
 const passport = require('passport')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')
+const connectDB = require('./db/connection')
+const mongodb = require('./db/connection')
+
+dotenv.config({ path: './.env' })
+
+// const mongodb = require('mongodb')
+// const MongoClient = require('mongodb').MongoClient
+
+// Passport config
+require('./db/passport')(passport)
+
+
+
+
 let bodyParser = require('body-parser')
 // const exphbs = require('express-handlebars')
 
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("./swagger.json");
 
-const app = express();
+connectDB()
 
-// dotenv.config({ path: './.env' })
+const app = express();
 
 const port = process.env.PORT || 8080;
 
-connectDB()
+// mongoose.connect(process.env.MONGODB_URI,{
+//     useNewUrlParser:true,
+//     useUnifiedTopology: true
+// })
 
-mongoose.connect(process.env.MONGODB_URI,{
-    useNewUrlParser:true,
-    useUnifiedTopology: true
-})
 
-// Passport config
-require('./db/passport')(passport)
 
 // Logging
-if (process.env.NODE_ENV === 'development') {
-  app.use(morgan('dev'))
-}
+// if (process.env.NODE_ENV === 'development') {
+//   app.use(morgan('dev'))
+// }
 
 // Handlebars
 // app.engine('.hbs', exphbs.engine({ defaultLayout: 'main', extname: '.hbs' }))

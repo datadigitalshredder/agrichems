@@ -1,7 +1,10 @@
 // const express = require('express');
 const router = require('express').Router()
+const dotenv = require('dotenv')
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('../swagger.json');
+
+dotenv.config({ path: './.env' })
 
 // router.use('/agrichems', require('./agrichems'));
 // router.use('/user', require('./user'));
@@ -13,8 +16,8 @@ const { ensureAuth, ensureGuest } = require('../middleware/auth')
 //     res.use('/api-docs', swaggerUi.setup(swaggerDocument));
 //   })
 
-router.use('/api-docs', ensureAuth, swaggerUi.serve);
-router.get('/api-docs', ensureAuth, swaggerUi.setup(swaggerDocument));
+// router.use('/api-docs', ensureAuth, swaggerUi.serve);
+// router.get('/api-docs', ensureAuth, swaggerUi.setup(swaggerDocument));
 
 
 router.get("/login", ensureGuest, async(req,res)=>{

@@ -52,7 +52,7 @@ const { ensureAuth, ensureGuest } = require('../middleware/auth')
 // })
 
 router.use('/agrichems', require('./agrichems'));
-// router.use('/user', require('./user'));
+router.use('/user', require('./user'));
 
 
 module.exports = router;

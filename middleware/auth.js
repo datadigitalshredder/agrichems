@@ -4,7 +4,7 @@ module.exports = {
     if (req.isAuthenticated()) {
       return next()
     } else {
-      res.redirect('/')
+      res.redirect('/api-docs')
     }
   },
   // if user is authenticated and going to login page then redirected to home page if not authenticated redirected to login page  .

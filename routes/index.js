@@ -20,9 +20,9 @@ const { ensureAuth, ensureGuest } = require('../middleware/auth')
 // router.get('/api-docs', ensureAuth, swaggerUi.setup(swaggerDocument));
 
 
-router.get("/login", ensureGuest, async(req,res)=>{
-    res.render('index',{userinfo:req.user})
-})
+// router.get("/login", ensureGuest, async(req,res)=>{
+//     res.render('index',{userinfo:req.user})
+// })
 
 // LOGIN TEST
 

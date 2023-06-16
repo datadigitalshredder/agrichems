@@ -24,13 +24,6 @@
     }
   },
   "paths": {
-    "/login": {
-      "get": {
-        "description": "",
-        "parameters": [],
-        "responses": {}
-      }
-    },
     "/agrichems/": {
       "get": {
         "description": "",

@@ -29,9 +29,9 @@ router.get("/login", ensureGuest, async(req,res)=>{
 // Login page
 // route GET /
 // ensureGuest
-router.get('/login', ensureGuest, (req, res) => {
-    res.redirect('https://pesticides.onrender.com/auth/google')
-})
+// router.get('/login', ensureGuest, (req, res) => {
+//     res.redirect('https://pesticides.onrender.com/auth/google')
+// })
 
 // router.get('/', (re, res) => {
 //     res.render('login', {
@@ -41,12 +41,12 @@ router.get('/login', ensureGuest, (req, res) => {
 
 // Swagger dashboard
 // route GET /dashboard
-// ensureAuth
-router.get('/api-docs', ensureAuth, (req, res) => {
-    res.redirect(
-        `https://pesticides.onrender.com/auth/google?client_id=${process.env.GOOGLE_CLIENT_ID}`
-      );
-})
+// // ensureAuth
+// router.get('/api-docs', ensureAuth, (req, res) => {
+//     res.redirect(
+//         `https://pesticides.onrender.com/auth/google?client_id=${process.env.GOOGLE_CLIENT_ID}`
+//       );
+// })
 // router.get('/dashboard', (req, res) => {
 //     res.render('dashboard')
 // })

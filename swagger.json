@@ -31,13 +31,6 @@
         "responses": {}
       }
     },
-    "/api-docs": {
-      "get": {
-        "description": "",
-        "parameters": [],
-        "responses": {}
-      }
-    },
     "/agrichems/": {
       "get": {
         "description": "",

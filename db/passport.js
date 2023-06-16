@@ -17,7 +17,8 @@ module.exports = function (passport) {
         // callbackURL: 'https://pesticides.onrender.com/auth/google/callback',
         // callbackURL: '/auth/google/callback',
         callbackURL: 'https://pesticides.onrender.com/api-docs/oauth2-redirect.html', // CALL BACK 2
-
+        userProfileURL: "https://www.googleapis.com/oauth2/v4/userinfo",
+        
       },
       async (accessToken, refreshToken, profile, done) => {
         //get the user data from google 

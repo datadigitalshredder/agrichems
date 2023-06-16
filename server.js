@@ -20,7 +20,7 @@ const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("./swagger.json");
 const { ensureAuth } = require('./middleware/auth')
 
-connectDB()
+// connectDB()
 
 const app = express();
 
@@ -49,6 +49,9 @@ require('./db/passport')(passport)
 // app.use(express.json())
 
 app
+  // Passport middleware
+  .use(passport.initialize())
+  .use(passport.session())
   .use('/api-docs', ensureAuth, swaggerUi.serve, swaggerUi.setup(swaggerDocument))
   .use(bodyParser.json())
   .use((req, res, next) => {
@@ -75,9 +78,7 @@ app
       store: MongoStore.create({ mongoUrl: process.env.MONGODB_URI }),
     })
   )
-  // Passport middleware
-  .use(passport.initialize())
-  .use(passport.session())
+
 
   // Routes
   .use('/', require('./routes'))

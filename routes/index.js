@@ -51,8 +51,9 @@ const { ensureAuth, ensureGuest } = require('../middleware/auth')
 //     res.render('dashboard')
 // })
 
-router.use('/agrichems', require('./agrichems'));
 router.use('/user', require('./user'));
+router.use('/agrichems', require('./agrichems'));
+
 
 
 module.exports = router;

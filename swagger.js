@@ -27,7 +27,7 @@ const doc = {
       type: "oauth2",
       flow: "implicit",
       authorizationUrl: "https://accounts.google.com/o/oauth2/v2/auth",
-      tokenUrl: "https://www.googleapis.com/oauth2/v4/token",
+      //tokenUrl: "https://www.googleapis.com/oauth2/v4/token",
       scopes: {
         "https://www.googleapis.com/auth/userinfo.profile": "All user operations requiring authentication.",
         read: "Grants read access",

@@ -30,8 +30,8 @@ const doc = {
       tokenUrl: "https://www.googleapis.com/oauth2/v4/token",
       scopes: {
         "https://www.googleapis.com/auth/userinfo.profile": "All user operations requiring authentication.",
-        read: "Grants read access",
-        write: "Grants write access"
+        // read: "Grants read access",
+        // write: "Grants write access"
       }
     }
   },
